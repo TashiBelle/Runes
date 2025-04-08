@@ -147,27 +147,15 @@ runes = {
   }
 }
 
-# prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
-while True: 
-  choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
-  if choice == "1":
-    # list_runes()
-     print("\nSelectable list of runes coming soon!\n")
-  elif choice == "2":
-    # cast1()
-    print("\nSingle cast randomizer coming soon!\n")
-  elif choice == "3":
-    # cast3()
-    print("\nTriple cast randomizer coming soon!\n")
-  else:
-    # restart from 'choice = input' ask
-    print("\nNo no no!\n")
-
 # list all rune names and ask user to select one; return all info on selected rune; enter 'back' to return to options
+def list_runes():
+  print("\nSelectable list of runes coming soon!\n")
 
 # randomly throw a single rune by name; ask user if they would like more info
   # if yes - return all info on rune
   # if no - return to options
+def cast1():
+  print("\nSingle cast randomizer coming soon!\n")
 
 #randomly throw 3 runes by name; ask user if they would like more info on any
   # if yes - prompt user to input rune name they would like more info about
@@ -176,3 +164,18 @@ while True:
       # if yes (would like to return), return list of previously thrown runes; ask user which one; repeat
       # if no - return to options
   # if no - return to options
+def cast3():
+  print("\nTriple cast randomizer coming soon!\n")
+
+# prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
+while True: 
+  choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
+  if choice == "1":
+    list_runes()
+  elif choice == "2":
+    cast1()
+  elif choice == "3":
+    cast3()
+  else:
+    # restart from 'choice = input' ask
+    print("\nNo no no!\n")
