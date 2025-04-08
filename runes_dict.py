@@ -1,6 +1,5 @@
 # add file paths to pngs later 
-# "sprite": "Macintosh HD/Users/dawson/Desktop/Custom Device Images/<name>.png"
-
+  # "sprite": "Macintosh HD/Users/dawson/Desktop/Custom Device Images/<name>.png"
 runes = {
   "FEHU": {
     "phonetic": "F",
@@ -146,3 +145,29 @@ runes = {
     "bright_stave": ["home", "group prosperity", "group order", "freedom", "productive interaction"],
     "murky_stave": ["lack of customary order", "totalitarianism", "slavery", "poverty", "homelessness"]
   }
+
+# prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
+choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n--> ")
+if choice == "1"
+  # list_runes()
+  print("Selectable list of runes coming soon!")
+elif choice == "2"
+  print("Single cast randomizer coming soon!")
+elif choice == "3"
+  print("Triple cast randomizer coming soon!")
+else:
+  print("No no no! \nType '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n--> ")
+
+# list all rune names and ask user to select one; return all info on selected rune; enter 'back' to return to options
+
+# randomly throw a single rune by name; ask user if they would like more info
+  # if yes - return all info on rune
+  # if no - return to options
+
+#randomly throw 3 runes by name; ask user if they would like more info on any
+  # if yes - prompt user to input rune name they would like more info about
+    # return with info on selection
+    # ask if user would like to go back for more info
+      # if yes (would like to return), return list of previously thrown runes; ask user which one; repeat
+      # if no - return to options
+  # if no - return to options
