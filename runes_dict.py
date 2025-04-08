@@ -149,7 +149,8 @@ runes = {
 
 # list all rune names and ask user to select one; return all info on selected rune; enter 'back' to return to options
 def list_runes():
-  print("\nSelectable list of runes coming soon!\n")
+  for rune in runes
+    print(runes)
 
 # randomly throw a single rune by name; ask user if they would like more info
   # if yes - return all info on rune
