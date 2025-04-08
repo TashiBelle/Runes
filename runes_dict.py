@@ -107,7 +107,7 @@ runes = {
     "phonetic": "B",
     "number": 18,
     "bright": ["birth", "becoming", "life changes", "shelter", "liberation"],
-    "murky: ["blurring of consciousness", "deceit", "sterility", "stagnation"]
+    "murky": ["blurring of consciousness", "deceit", "sterility", "stagnation"]
   },
   "EHWAZ": {
     "phonetic": "E",
