@@ -1,4 +1,4 @@
-import random 
+import random
 
 # add file paths to pngs later 
   # "sprite": "Macintosh HD/Users/dawson/Desktop/Custom Device Images/<name>.png"
@@ -158,14 +158,19 @@ def runes_menu():
 def list_runes():
   for rune in runes:
     print(rune)
+
   while True:
     list_choice = input("\nWould you like more info on a specific rune? (y/n) -->").lower()
     if list_choice == "y":
       list_sel = input("\nType name of rune to select: ").upper()
       if list_sel in runes:
-        print(f"\nRune: {list_sel}")
+        print(f"\n{list_sel}")
         for key, value in runes[list_sel].items():
-          print(f"{key.capitalize()}: {value}")
+          if isinstance(value, list):
+            clean_list = ", ".join(value)
+            print(f"{key.capitalize()}: {clean_list}")
+          else:
+            print(f"{key.capitalize()}: {value}")
             # for each value, print with comma separation
       else:
         print("\nThat's not a rune, silly.")
@@ -183,8 +188,9 @@ def cast1():
 
   while True:
     print(f"\n{cast1_rune}\n")
+
     while True:
-      cast1_choice = input("Type 'I' for more info on this rune. \nType 'C' to cast again. \nType 'M' to return to the menu. \nType 'Q' to quit. \n--> ").upper()
+      cast1_choice = input("Type 'I' for more info on this rune. \nType 'M' to return to the menu. \nType 'Q' to quit. \n--> ").upper()
       if cast1_choice == 'I':
         print(f"\n{cast1_rune}")
         for key, value in cast1_info.items():
@@ -193,10 +199,7 @@ def cast1():
             print(f"{key.capitalize()}: {clean_list}")
           else:
             print(f"{key.capitalize()}: {value}")
-                # fixing so that each key is on a new line & capitalized all nice
-        print("\n")
-      elif cast1_choice == 'C':
-        break
+        return
       elif cast1_choice == 'M':
         return
       elif cast1_choice == 'Q':
@@ -204,15 +207,45 @@ def cast1():
       else:
         print("\nUm...what?\n")
 
+# lets user choose the type of triple cast labels they would like to use
+def cast3_labels():
+  while True:
+    cast_type = input("\nType 'A' for past/present/future cast. \nType 'B' for overview/challenge/action cast. \n--> ").upper()
+    if cast_type == "A":
+      return ["Past", "Present", "Future"]
+    elif cast_type == "B":
+      return ["Overview", "Challenge","Action"]
+    else:
+      print("\nCome on, babe...\n")
+
 #randomly throw 3 runes by name; ask user if they would like more info on any
-  # if yes - prompt user to input rune name they would like more info about
-    # return with info on selection
-    # ask if user would like to go back for more info
-      # if yes (would like to return), return list of previously thrown runes; ask user which one; repeat
-      # if no - return to options
-  # if no - return to options
 def cast3():
-  print("\nTriple cast randomizer coming soon!\n")
+  labels = cast3_labels()
+  rune_names = list(runes.keys())
+  all_rune_info = list(runes.values())
+  casted = random.sample(rune_names, 3)
+
+  print("\n")
+  for label, rune_name in zip(labels, casted):
+    print(f"{label}: {rune_name}")
+
+  while True:
+    cast3_prompt1 = input("\nWould you like to know more about these runes? (y/n) \n--> ").lower()
+    if cast3_prompt1 == "y":
+      # pull using all_rune_info
+      for cast in casted:
+        print(f"\n{cast}")
+        for key, value in runes[cast].items():
+          if isinstance(value, list):
+            clean_list = ", ".join(value)
+            print(f"{key.capitalize()}: {clean_list}")
+          else:
+            print(f"{key.capitalize()}: {value}")
+      return
+    elif cast3_prompt1 == "n":
+      return
+    else:
+      print("\nMy good dude. Not an option.\n")
 
 # prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
 while True: 
