@@ -147,21 +147,22 @@ runes = {
   }
 }
 
-# list all rune names and ask user to select one; return all info on selected rune; enter 'back' to return to options
+# lists all rune names and asks user to select one; returns all info on selected rune
 def list_runes():
   print("\n")
   for rune in runes:
     print(rune)
   list_sel = input("\nType name of rune to select: ").upper()
-  if list_sel in runes:
-    print(f"\nRune: {list_sel}")
-    for key, value in runes[list_sel].items():
-      print(f"{key.capitalize()}: {value}")
-      # for each value, print with comma separation
-    print("\n")
-  else:
-    print("\nThat's not a rune, silly.\n")
-      # go back and let them try again
+  while True:
+    if list_sel in runes:
+      print(f"\nRune: {list_sel}")
+      for key, value in runes[list_sel].items():
+        print(f"{key.capitalize()}: {value}")
+        # for each value, print with comma separation
+      print("\n")
+      break
+    else:
+      print("\nThat's not a rune, silly.\n")
 
 # randomly throw a single rune by name; ask user if they would like more info
   # if yes - return all info on rune
@@ -180,14 +181,20 @@ def cast3():
   print("\nTriple cast randomizer coming soon!\n")
 
 # prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
-while True: 
-  choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
-  if choice == "1":
-    list_runes()
-  elif choice == "2":
-    cast1()
-  elif choice == "3":
-    cast3()
-  else:
-    # restart from 'choice = input' ask
-    print("\nNo no no!\n")
+def main_menu():
+  while True: 
+    choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
+    if choice == "1":
+      list_runes()
+      end_sel = input("\nType 1 to see the list again. \nType any other key to quit. \n--> ")
+        if end_sel == "1":
+          list_runes()
+        else:
+          break
+    elif choice == "2":
+      cast1()
+    elif choice == "3":
+      cast3()
+    else:
+      # restart from 'choice = input' ask
+      print("\nNo no no!\n")
