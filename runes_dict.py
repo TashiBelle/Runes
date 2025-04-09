@@ -181,20 +181,19 @@ def cast3():
   print("\nTriple cast randomizer coming soon!\n")
 
 # prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
-def main_menu():
-  while True: 
-    choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
-    if choice == "1":
-      list_runes()
-      end_sel = input("\nType 1 to see the list again. \nType any other key to quit. \n--> ")
-        if end_sel == "1":
-          list_runes()
-        else:
-          break
-    elif choice == "2":
-      cast1()
-    elif choice == "3":
-      cast3()
-    else:
-      # restart from 'choice = input' ask
-      print("\nNo no no!\n")
+while True: 
+  choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
+  if choice == "1":
+    list_runes()
+    end_sel = input("\nType 1 to see the list again. \nType any other key to quit. \n--> ")
+      if end_sel == "1":
+        list_runes()
+      else:
+        break
+  elif choice == "2":
+    cast1()
+  elif choice == "3":
+    cast3()
+  else:
+    # restart from 'choice = input' ask
+    print("\nNo no no!\n")
