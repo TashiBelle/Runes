@@ -1,3 +1,5 @@
+import random 
+
 # add file paths to pngs later 
   # "sprite": "Macintosh HD/Users/dawson/Desktop/Custom Device Images/<name>.png"
 runes = {
@@ -147,28 +149,60 @@ runes = {
   }
 }
 
+# makes it so the menu is called at the beginning of each loop in the main branch
+def runes_menu():
+  choice = input("\nType 'L' to view the list of runes. \nType 'S' to cast a single rune. \nType 'T' to cast three runes. \nType 'Q' to quit.\n--> ").upper()
+  return choice 
+
 # lists all rune names and asks user to select one; returns all info on selected rune
 def list_runes():
-  print("\n")
   for rune in runes:
     print(rune)
-  list_sel = input("\nType name of rune to select: ").upper()
   while True:
-    if list_sel in runes:
-      print(f"\nRune: {list_sel}")
-      for key, value in runes[list_sel].items():
-        print(f"{key.capitalize()}: {value}")
-        # for each value, print with comma separation
-      print("\n")
+    list_choice = input("\nWould you like more info on a specific rune? (y/n) -->").lower()
+    if list_choice == "y":
+      list_sel = input("\nType name of rune to select: ").upper()
+      if list_sel in runes:
+        print(f"\nRune: {list_sel}")
+        for key, value in runes[list_sel].items():
+          print(f"{key.capitalize()}: {value}")
+            # for each value, print with comma separation
+      else:
+        print("\nThat's not a rune, silly.")
+    elif list_choice == "n":
+      print("\nCool cool.\n")
       break
     else:
-      print("\nThat's not a rune, silly.\n")
+      print("\nTry again!")
 
-# randomly throw a single rune by name; ask user if they would like more info
-  # if yes - return all info on rune
-  # if no - return to options
+# randomly throw a single rune by name; ask user if they would like more info, cast again, return to menu, or quit
 def cast1():
-  print("\nSingle cast randomizer coming soon!\n")
+  rune_names = list(runes.keys())
+  cast1_rune = random.choice(rune_names)
+  cast1_info = runes[cast1_rune]
+
+  while True:
+    print(f"\n{cast1_rune}\n")
+    while True:
+      cast1_choice = input("Type 'I' for more info on this rune. \nType 'C' to cast again. \nType 'M' to return to the menu. \nType 'Q' to quit. \n--> ").upper()
+      if cast1_choice == 'I':
+        print(f"\n{cast1_rune}")
+        for key, value in cast1_info.items():
+          if isinstance(value, list):
+            clean_list = ", ".join(value)
+            print(f"{key.capitalize()}: {clean_list}")
+          else:
+            print(f"{key.capitalize()}: {value}")
+                # fixing so that each key is on a new line & capitalized all nice
+        print("\n")
+      elif cast1_choice == 'C':
+        break
+      elif cast1_choice == 'M':
+        return
+      elif cast1_choice == 'Q':
+        quit()
+      else:
+        print("\nUm...what?\n")
 
 #randomly throw 3 runes by name; ask user if they would like more info on any
   # if yes - prompt user to input rune name they would like more info about
@@ -182,18 +216,14 @@ def cast3():
 
 # prompt user to input if they would like to pick from the list, throw 1, or throw 3; continue to correct line
 while True: 
-  choice = input("Type '1' to view the list of runes. \nType '2' to cast one rune. \nType '3' to cast three runes. \n\n--> ")
-  if choice == "1":
+  choice = runes_menu()
+  if choice == "L":
     list_runes()
-    end_sel = input("\nType 1 to see the list again. \nType any other key to quit. \n--> ")
-      if end_sel == "1":
-        list_runes()
-      else:
-        break
-  elif choice == "2":
+  elif choice == "S":
     cast1()
-  elif choice == "3":
+  elif choice == "T":
     cast3()
+  elif choice == "Q":
+    quit()
   else:
-    # restart from 'choice = input' ask
     print("\nNo no no!\n")
