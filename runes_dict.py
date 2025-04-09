@@ -1,5 +1,6 @@
 import random
 
+# 4-9-25 01:58
 # add file paths to pngs later 
   # "sprite": "Macintosh HD/Users/dawson/Desktop/Custom Device Images/<name>.png"
 runes = {
